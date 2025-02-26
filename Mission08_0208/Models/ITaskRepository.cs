@@ -1,6 +1,6 @@
 using SQLitePCL;
 
-namespace Mission8_0206.Models;
+namespace Mission08_0208.Models;
 
 public interface ITaskRepository
 {

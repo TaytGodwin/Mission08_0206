@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Mission8_0206.Models;
+using Mission08_0208.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
