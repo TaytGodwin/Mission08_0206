@@ -45,7 +45,7 @@ namespace Mission08_0208.Controllers
             {
                 _repo.AddTask(t); // Add a taks to the database
 
-                return View();
+                return View("index");
             }
             else
             {
@@ -72,8 +72,6 @@ namespace Mission08_0208.Controllers
 
             return View("DeleteTask", taskToDelete); // Return the task to the view
         }
-        
-        
          
         
         [HttpPost]
