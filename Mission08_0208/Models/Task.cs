@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.InteropServices.JavaScript;
 
-namespace Mission8_0206.Models;
+namespace Mission08_0208.Models;
 
 public class Task
 {

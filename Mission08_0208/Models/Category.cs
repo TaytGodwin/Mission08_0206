@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Mission8_0206.Models;
+namespace Mission08_0208.Models;
 
 public class Category
 {
@@ -9,5 +9,6 @@ public class Category
     [Key]
     [Required]
     public int CategoryId { get; set; }
+    [Required]
     public string CategoryName { get; set; }
 }
