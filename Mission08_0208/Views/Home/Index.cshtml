@@ -18,8 +18,7 @@
                 <!-- Task Cards for Quadrant I -->
                 @foreach (var task in Model.Where(t => t.Quadrant == 1))
                 {
-                    <div class="card mb-3 w-100">
-                        <div class="card-body">
+                  
                             <div class="row align-items-center">
                                 <!-- Due Date Column (3 Columns Wide) -->
                                 <div class="col-md-3">
@@ -42,8 +41,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                            
                 }
                 @if (!Model.Any(t => t.Quadrant == 1))
                 {
