@@ -3,22 +3,76 @@
 }
 @model IEnumerable<Mission08_0208.Models.Task>
 
-<div>
-    <div class="container">
-        <h1 class="mt-4 mb-4">Task Quadrants</h1>
-        <!-- Quadrant I: Important/Urgent -->
-        <div class="row mb-4">
-            <!-- Title Row -->
-            <div class="col-12 mb-3">
-                <h2 class="text-center">Quadrant I: Important/Urgent</h2>
+<div class="container">
+    <div class="row">
+        
+        
+        <div class="col-6">
+            <!-- Quadrant I: Important/Urgent -->
+            <div class="row mb-4">
+                <!-- Title Row -->
+                <div class="col-12 mb-3">
+                    <h2 class="text-center">Quadrant I: Important/Urgent</h2>
+                </div>
+
+                <!-- Task Cards for Quadrant I -->
+                @foreach (var task in Model.Where(t => t.Quadrant == 1))
+                {
+                    <div class="card mb-3 w-100">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <!-- Due Date Column (3 Columns Wide) -->
+                                <div class="col-md-3">
+                                    <p class="mb-0"><strong>Due Date:</strong> @task.DueDate.ToShortDateString()</p>
+                                </div>
+                                <!-- Task Info and Completed Column (5 Columns Wide) -->
+                                <div class="col-md-5">
+                                    <p class="mb-0"><strong>Task:</strong> @task.TaskName</p>
+                                    <p class="mb-0"><strong>Completed:</strong> @(task.Completed ? "Yes" : "No")</p>
+                                </div>
+                                <!-- Buttons Column (4 Columns Wide) -->
+                                <div class="col-md-4">
+                                    <div class="btn-group" role="group">
+
+                                        <td><a asp-controller="Home" asp-action="DeleteTask" asp-route-Id="@task.TaskId" class="btn btn-danger btn-sm">Delete</a></td>
+                                        <td><a asp-controller="Home" asp-action="EditTask" asp-route-Id="@task.TaskId" class="btn btn-danger btn-sm">Edit</a></td>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (!Model.Any(t => t.Quadrant == 1))
+                {
+                    <div class="col-12">
+                        <p class="mb-0">No tasks available...</p>
+                    </div>
+                }
             </div>
 
-            <!-- Task Cards for Quadrant I -->
-            @foreach (var task in Model.Where(t => t.Quadrant == 1))
-            {
-                <div class="card mb-3 w-100">
-                    <div class="card-body">
-                        <div class="row align-items-center">
+
+
+
+        </div>
+
+        <div class="col-6">
+            @* Quadrant II:  Not Important / Urgent *@
+            <div class="container">
+                <div class="row mb-4">
+                    <!-- Title Row -->
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            @* Puts it across the whole page *@
+                            <h2 class="text-center">Quadrant II: Important / Not Urgent</h2>
+                        </div>
+                    </div>
+
+                    <!-- Task Rows for Quadrant II -->
+                    @foreach (var task in Model.Where(t => t.Quadrant == 2))
+                    {
+                        <div class="row border p-2 mb-2 align-items-center">
                             <!-- Due Date Column (3 Columns Wide) -->
                             <div class="col-md-3">
                                 <p class="mb-0"><strong>Due Date:</strong> @task.DueDate.ToShortDateString()</p>
@@ -31,156 +85,134 @@
                             <!-- Buttons Column (4 Columns Wide) -->
                             <div class="col-md-4">
                                 <div class="btn-group" role="group">
-                                   
+
                                     <td><a asp-controller="Home" asp-action="DeleteTask" asp-route-Id="@task.TaskId" class="btn btn-danger btn-sm">Delete</a></td>
                                     <td><a asp-controller="Home" asp-action="EditTask" asp-route-Id="@task.TaskId" class="btn btn-danger btn-sm">Edit</a></td>
-
 
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
+                    @if (!Model.Any(t => t.Quadrant == 2))
+                    {
+
+                        <div class="col-md-12">
+                            <p class="mb-0">No tasks available. . .</p>
+                        </div>
+                    }
                 </div>
-            }
-            @if (!Model.Any(t => t.Quadrant == 1))
-            {
-                <div class="col-12">
-                    <p class="mb-0">No tasks available...</p>
-                </div>
-            }
+
+
+
+            </div>
         </div>
+    
+       
+    </div>
+    <div class="row">
+        
+        <div class="col-6">
+            
+
+            @* Quadrant III:  Not Important / Urgent *@
+            <div class="container">
+                <div class="row mb-4">
+                    <!-- Title Row -->
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            @* Puts it across the whole page *@
+                            <h2 class="text-center">Quadrant III: Not Important / Urgent </h2>
+                        </div>
+                    </div>
+
+                    <!-- Task Rows for Quadrant III-->
+                    @foreach (var task in Model.Where(t => t.Quadrant == 3))
+                    {
+                        <div class="row border p-2 mb-2 align-items-center">
+                            <!-- Due Date Column (3 Columns Wide) -->
+                            <div class="col-md-3">
+                                <p class="mb-0"><strong>Due Date:</strong> @task.DueDate.ToShortDateString()</p>
+                            </div>
+                            <!-- Task Info and Completed Column (5 Columns Wide) -->
+                            <div class="col-md-5">
+                                <p class="mb-0"><strong>Task:</strong> @task.TaskName</p>
+                                <p class="mb-0"><strong>Completed:</strong> @(task.Completed ? "Yes" : "No")</p>
+                            </div>
+                            <!-- Buttons Column (4 Columns Wide) -->
+                            <div class="col-md-4">
+                                <div class="btn-group" role="group">
+                                    <td><a asp-controller="Home" asp-action="DeleteTask" asp-route-Id="@task.TaskId" class="btn btn-danger btn-sm">Delete</a></td>
+                                    <td><a asp-controller="Home" asp-action="EditTask" asp-route-Id="@task.TaskId" class="btn btn-danger btn-sm">Edit</a></td>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @if (!Model.Any(t => t.Quadrant == 3))
+                    {
+
+                        <div class="col-md-12">
+                            <p class="mb-0">No tasks available. . .</p>
+                        </div>
+                    }
+                </div>
+        </div>
+
+        
+
+
+      
+
     </div>
 
 
-    @* Quadrant II: Important/Not Urgent *@
+        <div class="col-6">
 
-    <div class="row mb-4">
-        <!-- Title Row -->
-        <div class="row mb-3">
-            <div class="col-12">
-                @* Puts it across the whole page *@
-                <h2 class="text-center">Quadrant II: Important / Not Urgent</h2>
-            </div>
-        </div>
+            @* Quadrant IV:  Not Important / Urgent *@
 
-        <!-- Task Rows for Quadrant II -->
-        @foreach (var task in Model.Where(t => t.Quadrant == 2))
-        {
-            <div class="row border p-2 mb-2 align-items-center">
-                <!-- Due Date Column (3 Columns Wide) -->
-                <div class="col-md-3">
-                    <p class="mb-0"><strong>Due Date:</strong> @task.DueDate.ToShortDateString()</p>
-                </div>
-                <!-- Task Info and Completed Column (5 Columns Wide) -->
-                <div class="col-md-5">
-                    <p class="mb-0"><strong>Task:</strong> @task.TaskName</p>
-                    <p class="mb-0"><strong>Completed:</strong> @(task.Completed ? "Yes" : "No")</p>
-                </div>
-                <!-- Buttons Column (4 Columns Wide) -->
-                <div class="col-md-4">
-                    <div class="btn-group" role="group">
-                       
-                        <td><a asp-controller="Home" asp-action="DeleteTask" asp-route-Id="@task.TaskId" class="btn btn-danger btn-sm">Delete</a></td>
-                        <td><a asp-controller="Home" asp-action="EditTask" asp-route-Id="@task.TaskId" class="btn btn-danger btn-sm">Edit</a></td>
-
+            @* Quadrant IV:  Not Important / Not Urgent *@
+            <div class="row mb-4">
+                <!-- Title Row -->
+                <div class="row mb-3">
+                    <div class="col-12">
+                        @* Puts it across the whole page *@
+                        <h2 class="text-center">Quadrant IV: Not Important / Not Urgent </h2>
                     </div>
                 </div>
-            </div>
-        }
-        @if (!Model.Any(t => t.Quadrant == 2))
-        {
 
-            <div class="col-md-12">
-                <p class="mb-0">No tasks available. . .</p>
-            </div>
-        }
-    </div>
+                <!-- Task Rows for Quadrant IV -->
+                @foreach (var task in Model.Where(t => t.Quadrant == 4))
+                {
+                    <div class="row border p-2 mb-2 align-items-center">
+                        <!-- Due Date Column (3 Columns Wide) -->
+                        <div class="col-md-3">
+                            <p class="mb-0"><strong>Due Date:</strong> @task.DueDate.ToShortDateString()</p>
+                        </div>
+                        <!-- Task Info and Completed Column (5 Columns Wide) -->
+                        <div class="col-md-5">
+                            <p class="mb-0"><strong>Task:</strong> @task.TaskName</p>
+                            <p class="mb-0"><strong>Completed:</strong> @(task.Completed ? "Yes" : "No")</p>
+                        </div>
+                        <!-- Buttons Column (4 Columns Wide) -->
+                        <div class="col-md-4">
+                            <div class="btn-group" role="group">
+                                <td><a asp-controller="Home" asp-action="DeleteTask" asp-route-Id="@task.TaskId" class="btn btn-danger btn-sm">Delete</a></td>
+                                <td><a asp-controller="Home" asp-action="EditTask" asp-route-Id="@task.TaskId" class="btn btn-danger btn-sm">Edit</a></td>
 
-    @* Quadrant III:  Not Important / Urgent *@
 
-    <div class="row mb-4">
-        <!-- Title Row -->
-        <div class="row mb-3">
-            <div class="col-12">
-                @* Puts it across the whole page *@
-                <h2 class="text-center">Quadrant III: Not Important / Urgent </h2>
-            </div>
-        </div>
-
-        <!-- Task Rows for Quadrant III-->
-        @foreach (var task in Model.Where(t => t.Quadrant == 3))
-        {
-            <div class="row border p-2 mb-2 align-items-center">
-                <!-- Due Date Column (3 Columns Wide) -->
-                <div class="col-md-3">
-                    <p class="mb-0"><strong>Due Date:</strong> @task.DueDate.ToShortDateString()</p>
-                </div>
-                <!-- Task Info and Completed Column (5 Columns Wide) -->
-                <div class="col-md-5">
-                    <p class="mb-0"><strong>Task:</strong> @task.TaskName</p>
-                    <p class="mb-0"><strong>Completed:</strong> @(task.Completed ? "Yes" : "No")</p>
-                </div>
-                <!-- Buttons Column (4 Columns Wide) -->
-                <div class="col-md-4">
-                    <div class="btn-group" role="group">
-                        <td><a asp-controller="Home" asp-action="DeleteTask" asp-route-Id="@task.TaskId" class="btn btn-danger btn-sm">Delete</a></td>
-                        <td><a asp-controller="Home" asp-action="EditTask" asp-route-Id="@task.TaskId" class="btn btn-danger btn-sm">Edit</a></td>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        }
-        @if (!Model.Any(t => t.Quadrant == 3))
-        {
+                }
+                @if (!Model.Any(t => t.Quadrant == 4))
+                {
 
-            <div class="col-md-12">
-                <p class="mb-0">No tasks available. . .</p>
-            </div>
-        }
-    </div>
-
-    @* Quadrant IV:  Not Important / Not Urgent *@
-
-    <div class="row mb-4">
-        <!-- Title Row -->
-        <div class="row mb-3">
-            <div class="col-12">
-                @* Puts it across the whole page *@
-                <h2 class="text-center">Quadrant IV: Not Important / Not Urgent </h2>
-            </div>
-        </div>
-
-        <!-- Task Rows for Quadrant IV -->
-        @foreach (var task in Model.Where(t => t.Quadrant == 4))
-        {
-            <div class="row border p-2 mb-2 align-items-center">
-                <!-- Due Date Column (3 Columns Wide) -->
-                <div class="col-md-3">
-                    <p class="mb-0"><strong>Due Date:</strong> @task.DueDate.ToShortDateString()</p>
-                </div>
-                <!-- Task Info and Completed Column (5 Columns Wide) -->
-                <div class="col-md-5">
-                    <p class="mb-0"><strong>Task:</strong> @task.TaskName</p>
-                    <p class="mb-0"><strong>Completed:</strong> @(task.Completed ? "Yes" : "No")</p>
-                </div>
-                <!-- Buttons Column (4 Columns Wide) -->
-                <div class="col-md-4">
-                    <div class="btn-group" role="group">
-                        <td><a asp-controller="Home" asp-action="DeleteTask" asp-route-Id="@task.TaskId" class="btn btn-danger btn-sm">Delete</a></td>
-                        <td><a asp-controller="Home" asp-action="EditTask" asp-route-Id="@task.TaskId" class="btn btn-danger btn-sm">Edit</a></td>
-
-                    
-                   
+                    <div class="col-md-12">
+                        <p class="mb-0">No tasks available. . .</p>
                     </div>
-                </div>
+                }
             </div>
-        }
-        @if (!Model.Any(t => t.Quadrant == 4))
-        {
 
-            <div class="col-md-12">
-                <p class="mb-0">No tasks available. . .</p>
-            </div>
-        }
+        </div>
     </div>
-
+    
 </div>
