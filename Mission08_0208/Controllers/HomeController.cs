@@ -14,9 +14,23 @@ namespace Mission08_0208.Controllers
             _repo = repo;
         }
 
+        // public IActionResult Index()
+        // {
+        //     ViewBag.Tasks = _repo.Tasks
+        //         .OrderBy(x => x.TaskId)
+        //         .Where(x => x.Completed == false) // Only return incomplete tasks
+        //         .ToList();
+        //
+        //     ViewBag.Categories = _repo.Categories
+        //         .OrderBy(x => x.CategoryId)
+        //         .ToList();
+        //
+        //
+        //     return View();
+        // }
         public IActionResult Index()
         {
-            ViewBag.Tasks = _repo.Tasks
+            var tasks = _repo.Tasks
                 .OrderBy(x => x.TaskId)
                 .Where(x => x.Completed == false) // Only return incomplete tasks
                 .ToList();
@@ -25,8 +39,7 @@ namespace Mission08_0208.Controllers
                 .OrderBy(x => x.CategoryId)
                 .ToList();
 
-
-            return View();
+            return View(tasks); // Pass tasks as the model
         }
 
         // Adding tasks
@@ -61,14 +74,22 @@ namespace Mission08_0208.Controllers
 
         // Deleteing Tasks
         [HttpGet]
-        public IActionResult DeleteTask(int Id)
+        public IActionResult DeleteTask(int? Id)
         {
+            if (Id == null)
+                return NotFound();
+            
             ModelTask taskToDelete = _repo.Tasks // Get the task to delete
                 .Where(x => x.TaskId == Id)
-                .Single();
+                .SingleOrDefault();
+            
 
             return View("DeleteTask", taskToDelete); // Return the task to the view
         }
+        
+        
+         
+        
         [HttpPost]
         public ActionResult DeleteTask(ModelTask taskToDelete)
         {
@@ -76,6 +97,8 @@ namespace Mission08_0208.Controllers
 
             return RedirectToAction("Index");
         }
+        
+        
 
         // Updating tasks
         [HttpGet]
