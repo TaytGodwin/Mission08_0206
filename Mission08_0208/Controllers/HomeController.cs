@@ -45,7 +45,7 @@ namespace Mission08_0208.Controllers
             {
                 _repo.AddTask(t); // Add a taks to the database
 
-                return View("index");
+                return RedirectToAction("Index");
             }
             else
             {
