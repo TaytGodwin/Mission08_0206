@@ -11,32 +11,33 @@
     <link rel="stylesheet" href="~/Mission8_0206.styles.css" asp-append-version="true" />
 </head>
 <body>
-    
+
     @* Top Nav Bar *@
-    <div class="container">
-        <div class="row">
-            @* Home Page *@
-            <div class="col-3">
-                <a asp-controller="Home" asp-action="Index">Management Matrix</a>
-            </div>
-            @* Website Title *@
-            <div class="col-6">
-                <a asp-controller="Home" asp-action="Index">Evil Hilton's Time Management Maxtrix ToDo List'</a>
-            </div>
-            @* Add Task Page *@
-            <div class="col-3">
-                <a asp-controller="Home" asp-action="AddTask">Add Task</a>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            @* Left - Home Page Link *@
+            <a class="btn btn-evil" asp-controller="Home" asp-action="Index">Management Matrix</a>
+
+            @* Center - Website Title *@
+            <div class="mx-auto text-center fw-bold">
+                <span class="navbar-text text-light">
+                    Evil Hilton's To-Do List
+                </span>
             </div>
 
+            @* Right - Add Task Button *@
+            <div>
+                <a class="btn btn-evil" asp-controller="Home" asp-action="AddTask">+ Add Task</a>
+            </div>
         </div>
-    </div>
+    </nav>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

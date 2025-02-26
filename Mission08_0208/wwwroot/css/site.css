@@ -1,22 +1,28 @@
-html {
-  font-size: 14px;
+/* Villain Theme Styling */
+.navbar-custom {
+    background-color: #0d0d0d; /* Dark villainous black */
+    border-bottom: 3px solid #17a02a; /* Evil green */
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #17a02a !important; /* Evil green text */
+    font-weight: bold;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    .navbar-custom .nav-link:hover {
+        color: #ffffff !important; /* White on hover */
+    }
+
+.btn-evil {
+    background-color: #17a02a; /* Green villain button */
+    border: none;
+    color: #0d0d0d;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-}
+    .btn-evil:hover {
+        background-color: #0b791f; /* Darker green on hover */
+        color: white;
+    }

@@ -1,65 +1,69 @@
 ﻿@{
-	ViewData["Title"] = "AddTask";
+    ViewData["Title"] = "AddTask";
 }
 
 @model Mission08_0208.Models.Task
 
 @* Page Title *@
-<div class="container">
-	<div class="row">
-		<div class="col">
-			<h3>So You Want To Add A Task To My ToDo List?</h3>
-		</div>
-	</div>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col text-center">
+            <h3 class="glowing-text">So You Want To Add A Task To My ToDo List?</h3>
+        </div>
+    </div>
 </div>
 
 @* Form to Add/Edit Tasks *@
-<div class="container">
-	<form method="post">
-		<div class="row">
-			<div class="col-6">
-				<input type="hidden" asp-for="TaskId" />
-				<label asp-for="TaskName" class="col-form-label">Task Title</label>
-				<input asp-for="TaskName" class="form-control" required />
-			</div>
-			<div class="col-6">
-				<label asp-for="DueDate" class="col-form-label">Due Date</label>
-				<input asp-for="DueDate" class="forma-control" />
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<label asp-for="Quadrant" class="col-form-label">Quadrant</label>
-				<select asp-for="Quadrant">
-					<option value="Quadrant 1">Quadrant 1</option>
-					<option value="Quadrant 2">Quadrant 2</option>
-					<option value="Quadrant 3">Quadrant 3</option>
-					<option value="Quadrant 4">Quadrant 4</option>
-				</select>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-6">
-				<select asp-for="CategoryId">
-					<option value="">Select a Category</option>
-					@foreach (Category record in ViewBag.Categories)
-					{
-						<option value="@record.CategoryId">@record.CategoryName</option>
-					}
-				</select>
-			</div>
-			<div class="col-6">
-				<label asp-for="Completed">Completed?</label>
-				<select asp-for="Completed">
-					<option value="true">Yes</option>
-					<option value="false">No</option>
-				</select>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<button type="submit">Submit</button>
-			</div>
-		</div>
-	</form>
+<div class="container mt-4">
+    <form method="post">
+        <div class="row mb-3">
+            <div class="col-6">
+                <input type="hidden" asp-for="TaskId" />
+                <label asp-for="TaskName" class="col-form-label">Task Title</label>
+                <input asp-for="TaskName" class="form-control" required />
+            </div>
+            <div class="col-6">
+                <label asp-for="DueDate" class="col-form-label">Due Date</label>
+                <input asp-for="DueDate" class="form-control" type="date" />
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label asp-for="Quadrant" class="col-form-label">Quadrant</label>
+                <select asp-for="Quadrant" class="form-control">
+                    <option value="1">Quadrant 1</option>
+                    <option value="2">Quadrant 2</option>
+                    <option value="3">Quadrant 3</option>
+                    <option value="4">Quadrant 4</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-6">
+                <label asp-for="CategoryId" class="col-form-label">Category</label>
+                <select asp-for="CategoryId" class="form-control">
+                    <option value="">Select a Category</option>
+                    @foreach (Category record in ViewBag.Categories)
+                    {
+                        <option value="@record.CategoryId">@record.CategoryName</option>
+                    }
+                </select>
+            </div>
+            <div class="col-6">
+                <label asp-for="Completed" class="col-form-label">Completed?</label>
+                <select asp-for="Completed" class="form-control">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col text-center">
+                <button type="submit" class="btn btn-danger btn-lg">Submit</button>
+            </div>
+        </div>
+    </form>
 </div>
