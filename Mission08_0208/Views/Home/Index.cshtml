@@ -6,6 +6,8 @@
 <div>
     <div class="container">
         <h1 class="mt-4 mb-4">Task Quadrants</h1>
+        
+        
 
         <!-- Quadrant I: Important/Urgent -->
         <div class="row mb-4">
@@ -32,9 +34,11 @@
                             <!-- Buttons Column (4 Columns Wide) -->
                             <div class="col-md-4">
                                 <div class="btn-group" role="group">
-                                    <a href="@Url.Action("Edit", "Tasks", new { id = task.TaskId })" class="btn btn-primary btn-sm">Edit</a>
-                                    <a href="@Url.Action("DeleteTask", "Tasks", new { id = task.TaskId })" class="btn btn-danger btn-sm">Delete</a>
-                                </div>
+                                    <td><a asp-controller="Home" asp-action="DeleteTask" class="btn btn-danger btn-sm">Delete</a></td>
+                                    <td><a asp-controller="Home" asp-action="AddTask" class="btn btn-danger btn-sm">Edit</a></td>
+
+                                    
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -77,9 +81,10 @@
                 <!-- Buttons Column (4 Columns Wide) -->
                 <div class="col-md-4">
                     <div class="btn-group" role="group">
-                        <a href="@Url.Action("Edit", "Tasks", new { id = task.TaskId })" class="btn btn-primary btn-sm">Edit</a>
-                        <a href="@Url.Action("Delete", "Tasks", new { id = task.TaskId })" class="btn btn-danger btn-sm">Delete</a>
-                    </div>
+                        <td><a asp-controller="Home" asp-action="DeleteTask" class="btn btn-danger btn-sm">Delete</a></td>
+                        <td><a asp-controller="Home" asp-action="AddTask" class="btn btn-danger btn-sm">Edit</a></td>
+
+                       </div>
                 </div>
             </div>
         }
@@ -119,9 +124,9 @@
                 <!-- Buttons Column (4 Columns Wide) -->
                 <div class="col-md-4">
                     <div class="btn-group" role="group">
-                        <a href="@Url.Action("Edit", "Tasks", new { id = task.TaskId })" class="btn btn-primary btn-sm">Edit</a>
-                        <a href="@Url.Action("Delete", "Tasks", new { id = task.TaskId })" class="btn btn-danger btn-sm">Delete</a>
-                    </div>
+                        <td><a asp-controller="Home" asp-action="DeleteTask" class="btn btn-danger btn-sm">Delete</a></td>
+                        <td><a asp-controller="Home" asp-action="AddTask" class="btn btn-danger btn-sm">Edit</a></td>
+                        </div>
                 </div>
             </div>
         }
