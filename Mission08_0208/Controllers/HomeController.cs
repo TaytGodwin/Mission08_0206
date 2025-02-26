@@ -14,20 +14,6 @@ namespace Mission08_0208.Controllers
             _repo = repo;
         }
 
-        // public IActionResult Index()
-        // {
-        //     ViewBag.Tasks = _repo.Tasks
-        //         .OrderBy(x => x.TaskId)
-        //         .Where(x => x.Completed == false) // Only return incomplete tasks
-        //         .ToList();
-        //
-        //     ViewBag.Categories = _repo.Categories
-        //         .OrderBy(x => x.CategoryId)
-        //         .ToList();
-        //
-        //
-        //     return View();
-        // }
         public IActionResult Index()
         {
             var tasks = _repo.Tasks
