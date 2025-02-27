@@ -14,7 +14,7 @@ public class Task
     // Verifies length isn't too long for database storage and displaying on quandrants page
     [MaxLength(30, ErrorMessage = "Maximum length 30 characters")]
     public string? TaskName { get; set; }
-
+    
     public DateTime? DueDate { get; set; }
     
     [Required(ErrorMessage = "Please enter valid quadrant for the task")]
@@ -26,6 +26,6 @@ public class Task
     public int? CategoryId { get; set; }
     public Category? Category { get; set; }
     
-    public bool Completed { get; set; }
+    public bool? Completed { get; set; }
     
 }
