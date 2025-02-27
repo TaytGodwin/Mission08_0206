@@ -33,7 +33,7 @@ namespace Mission08_0208.Migrations
                     TaskId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     TaskName = table.Column<string>(type: "TEXT", maxLength: 30, nullable: false),
-                    DueDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    DueDate = table.Column<DateTime>(type: "TEXT", nullable: true),
                     Quadrant = table.Column<int>(type: "INTEGER", nullable: false),
                     CategoryId = table.Column<int>(type: "INTEGER", nullable: true),
                     Completed = table.Column<bool>(type: "INTEGER", nullable: false)
