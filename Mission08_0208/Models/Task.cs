@@ -15,7 +15,7 @@ public class Task
     [MaxLength(30, ErrorMessage = "Maximum length 30 characters")]
     public string? TaskName { get; set; }
     
-    public DateTime DueDate { get; set; }
+    public DateTime? DueDate { get; set; }
     
     [Required(ErrorMessage = "Please enter valid quadrant for the task")]
     [Range(1,4, ErrorMessage = "The form isn't changing entry to integer values 1-4")]
@@ -26,6 +26,6 @@ public class Task
     public int? CategoryId { get; set; }
     public Category? Category { get; set; }
     
-    public bool Completed { get; set; }
+    public bool? Completed { get; set; }
     
 }
