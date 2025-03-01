@@ -13,7 +13,7 @@ public class Task
     [Required(ErrorMessage = "Please enter the task name")]
     // Verifies length isn't too long for database storage and displaying on quandrants page
     [MaxLength(30, ErrorMessage = "Maximum length 30 characters")]
-    public string? TaskName { get; set; }
+    public string TaskName { get; set; }
     
     public DateTime? DueDate { get; set; }
     
